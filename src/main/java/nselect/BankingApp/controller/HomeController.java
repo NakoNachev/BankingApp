@@ -44,6 +44,20 @@ public class HomeController {
 	public String confirmLogin() {
 		return "login_confirmation";
 	}
+	
+	/**
+	 * Validates registration, if user doesn't exist, pushes it into the database, otherwise rejects and 
+	 * returns to the registration form
+	 * @param model
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping("/checkRegistration")
+	public String checkRegistration(Model model, @ModelAttribute("user") Users user) {
+		return null;
+		
+		
+	}
 
 }
 
