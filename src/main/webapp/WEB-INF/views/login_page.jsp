@@ -14,12 +14,16 @@
 	
 	<body>
 	
+	
+	
 	Welcome to NBanking!
+	
+	<span> ${wrongPasswordMessage}</span> <br>
 	
 	
 	<form:form action="successfulLogin" modelAttribute="user">
 	
-		Username: <form:input type="text" path="nickname" /> <br>
+		Username: <form:input type="text" path="username" /> <br>
 		Password: <form:input type="password" path="password" /> <br>
 		
 		<input type="submit" value="Login" /> <br>

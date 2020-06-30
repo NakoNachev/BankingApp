@@ -49,8 +49,21 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/successfulLogin")
-	public String confirmLogin() {
-		return "login_confirmation";
+	public String confirmLogin(Model model, @ModelAttribute ("user") Users user) {
+		
+		//TODO:check for user existance
+		//hash login password
+		
+		String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+
+		if(BCrypt.checkpw(user.getPassword(), hashedPassword)) {
+			return "login_confirmation";
+		}
+		else {
+			model.addAttribute("wrongPasswordMessage","The entered password is not correct");
+			return "login_page";
+		}
+
 	}
 	
 	/**
@@ -72,10 +85,12 @@ public class HomeController {
 		}
 		
 		if(userExists) {
+			//inform user for already existing user
 			model.addAttribute("message","User already exists!");
 			return "register_page";
 		}
 		else {
+			//generate salt for hashing and store the hashed pw in database
 			String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
 			user.setPassword(hashedPassword);
 			usersService.persist(user);
