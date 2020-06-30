@@ -12,6 +12,8 @@
 	
 	<body>
 	
+		<span>${message}</span> <br>
+	
 	<!-- ID is automatically generated, balance always starts with 0 -->
 	
 	<form:form action="checkRegistration" modelAttribute="user">

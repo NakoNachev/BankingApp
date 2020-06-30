@@ -1,6 +1,9 @@
 package nselect.BankingApp.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -60,8 +63,25 @@ public class HomeController {
 	@RequestMapping("/checkRegistration")
 	public String checkRegistration(Model model, @ModelAttribute("user") Users user) {
 		
-		usersService.persist(user);
-		return "register_confirmation";
+		List<Users> currentUsers = usersService.findAll();
+		boolean userExists = false;
+		for (int index=0; index< currentUsers.size(); index++) {
+			if(currentUsers.get(index).getUsername().equals(user.getUsername())){
+				userExists = true;
+			}
+		}
+		
+		if(userExists) {
+			model.addAttribute("message","User already exists!");
+			return "register_page";
+		}
+		else {
+			String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+			user.setPassword(hashedPassword);
+			usersService.persist(user);
+			return "register_confirmation";
+		}
+		
 		
 		
 	}
