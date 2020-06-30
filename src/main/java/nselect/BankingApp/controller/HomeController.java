@@ -1,11 +1,13 @@
 package nselect.BankingApp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import nselect.BankingApp.entities.Users;
+import nselect.BankingApp.services.UsersService;
 
 
 /**
@@ -16,6 +18,9 @@ import nselect.BankingApp.entities.Users;
 @Controller
 @RequestMapping("/")
 public class HomeController {
+	
+	@Autowired
+	private UsersService usersService;
 	
 	@RequestMapping("/")
 	public String getStartingPage(Model model) {
@@ -35,7 +40,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/register")
-	public String getRegisterPage() {
+	public String getRegisterPage(@ModelAttribute ("user") Users user) {
 		return "register_page";
 		
 	}
@@ -54,7 +59,9 @@ public class HomeController {
 	 */
 	@RequestMapping("/checkRegistration")
 	public String checkRegistration(Model model, @ModelAttribute("user") Users user) {
-		return null;
+		
+		usersService.persist(user);
+		return "register_confirmation";
 		
 		
 	}

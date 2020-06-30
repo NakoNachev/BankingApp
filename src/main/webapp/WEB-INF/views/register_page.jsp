@@ -17,7 +17,7 @@
 	<form:form action="checkRegistration" modelAttribute="user">
 	
 		Please choose a: <br>
-		Username: <form:input type="text" path="nickname" /> <br>
+		Username: <form:input type="text" path="username" /> <br>
 		Password: <form:input type="password" path="password" /> <br>
 		Email: <form:input type="text" path="email" /> <br>
 		

@@ -20,20 +20,35 @@ public class UsersService implements GenericDao<Users> {
 
 	@Override
 	public void persist(Users entity) {
-		// TODO Auto-generated method stub
+		usersDao.openCurrentSessionWithTransaction();
+		usersDao.persist(entity);
+		usersDao.closeCurrentSessionWithTransaction();
 		
 	}
 
 	@Override
 	public void update(Users entity) {
-		// TODO Auto-generated method stub
+		usersDao.openCurrentSessionWithTransaction();
+		usersDao.update(entity);
+		usersDao.closeCurrentSessionWithTransaction();
 		
 	}
-
+	
+	/**
+	 * Not being used, just a implementation of the interface method
+	 */
 	@Override
 	public Users findByID(int id) {
-		// TODO Auto-generated method stub
+		
 		return null;
+	}
+	
+	public Users findByUsername(String username) {
+		
+		usersDao.openCurrentSession();
+		Users user = usersDao.findByUsername(username);
+		usersDao.closeCurrentSession();
+		return user;
 	}
 
 	@Override
@@ -44,8 +59,12 @@ public class UsersService implements GenericDao<Users> {
 
 	@Override
 	public List<Users> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		usersDao.openCurrentSessionWithTransaction();
+		List<Users> users = usersDao.findAll();
+		usersDao.closeCurrentSessionWithTransaction();
+		
+		return users;
 	}
 
 }

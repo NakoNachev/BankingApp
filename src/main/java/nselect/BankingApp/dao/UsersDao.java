@@ -4,17 +4,17 @@ import java.util.List;
 
 import nselect.BankingApp.entities.Users;
 
-public class UsersDao implements GenericDao<Users> {
+public class UsersDao extends SessionTransactionControl implements GenericDao<Users> {
 
 	@Override
 	public void persist(Users entity) {
-		// TODO Auto-generated method stub
+		super.getCurrentSession().save(entity);
 		
 	}
 
 	@Override
 	public void update(Users entity) {
-		// TODO Auto-generated method stub
+		super.getCurrentSession().saveOrUpdate(entity);
 		
 	}
 
@@ -22,6 +22,12 @@ public class UsersDao implements GenericDao<Users> {
 	public Users findByID(int id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public Users findByUsername(String username) {
+		
+		Users user = super.currentSession.find(Users.class, username);
+		return user;
 	}
 
 	@Override
@@ -32,8 +38,9 @@ public class UsersDao implements GenericDao<Users> {
 
 	@Override
 	public List<Users> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Users> users = super.getCurrentSession().createQuery("from Users u").getResultList();
+		return users;
 	}
 
 

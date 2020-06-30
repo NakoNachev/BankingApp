@@ -18,7 +18,7 @@ public class MainController {
 	public String getMainView() {
 		
 		
-		return "
+		return null;
 	}
 	
 	

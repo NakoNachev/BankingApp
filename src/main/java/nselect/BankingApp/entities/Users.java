@@ -18,12 +18,9 @@ import javax.persistence.Table;
 public class Users {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	private int id;
-	
-	@Column(name="nickname")
-	private String nickname;
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="username")
+	private String username;
 	
 	@Column(name="password")
 	private String password;
@@ -38,20 +35,16 @@ public class Users {
 		
 	}
 	
-	public int getId() {
-		return id;
-	}
-	public String getNickname() {
-		return nickname;
+
+	public String getUsername() {
+		return username;
 	}
 	public String getPassword() {
 		return password;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public void setPassword(String password) {
 		this.password = password;
@@ -74,10 +67,14 @@ public class Users {
 		this.email = email;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", nickname=" + nickname + ", password=" + password + "]";
+		return "Users [username=" + username + ", password=" + password + ", accBalance=" + accBalance + ", email="
+				+ email + "]";
 	}
+
+
 	
 	
 	
