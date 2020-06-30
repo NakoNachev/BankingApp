@@ -2,6 +2,7 @@ package nselect.BankingApp.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import nselect.BankingApp.entities.Users;
@@ -27,7 +28,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/login")
-	public String getLoginPage() {
+	public String getLoginPage(@ModelAttribute ("user") Users user) {
 		return "login_page";
 		
 		

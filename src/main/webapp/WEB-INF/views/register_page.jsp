@@ -9,6 +9,17 @@
 	
 	
 	<body>
+	
+	
+	<form:form action="successfulRegistration" modelAttribute="user">
+	
+		Please choose a: <br>
+		Username: <form:input type="text" path="nickname" /> <br>
+		Password: <form:input type="password" path="password" /> <br>
+		
+		<input type="submit" value="Login" /> <br>
+	
+	</form:form>
 
 	</body>
 </html>

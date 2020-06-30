@@ -28,6 +28,12 @@ public class Users {
 	@Column(name="password")
 	private String password;
 	
+	@Column(name="acc_balance")
+	private double accBalance;
+	
+	@Column(name="email")
+	private String email;
+
 	public Users() {
 		
 	}
@@ -49,6 +55,23 @@ public class Users {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+		
+
+	public double getAccBalance() {
+		return accBalance;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setAccBalance(double accBalance) {
+		this.accBalance = accBalance;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
