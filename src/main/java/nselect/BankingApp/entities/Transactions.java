@@ -24,7 +24,7 @@ public class Transactions {
 	@Column(name="receiver")
 	private String receiver;
 	
-	@Column(name="issueDate")
+	@Column(name="issue_date")
 	private Date issueDate;
 	
 	@Column(name="amount")

@@ -14,7 +14,7 @@
 		<div id="content">
 		
 			Please choose one of the following options:  <br>
-			<a href="">Deposit money</a> <br>
+			<a href="preview/deposit">Deposit money</a> <br>
 			<a href="">Withdraw money</a> <br>
 			<a href="">Transfer money to another account</a> <br>
 			<a href="">See previous transactions</a> <br>

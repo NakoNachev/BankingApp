@@ -9,7 +9,7 @@
 	
 	<body>
 	You have logged in successfully! <br>
-	<a href="/home" > Go to home page</a>
+	<a href="home/preview" > Go to home page</a>
 
 	</body>
 </html>
